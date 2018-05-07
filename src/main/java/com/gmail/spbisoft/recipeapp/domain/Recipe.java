@@ -1,6 +1,7 @@
 package com.gmail.spbisoft.recipeapp.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -18,6 +19,9 @@ public class Recipe {
     private String directions;
     // todo add
     // private Difficulty difficulty;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
 
     @Lob // will be created ass a binary object field inside the database
     private Byte[] image;
