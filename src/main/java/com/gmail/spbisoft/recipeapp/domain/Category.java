@@ -1,7 +1,6 @@
 package com.gmail.spbisoft.recipeapp.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
