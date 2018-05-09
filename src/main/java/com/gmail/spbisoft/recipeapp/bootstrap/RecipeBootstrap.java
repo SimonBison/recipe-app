@@ -4,18 +4,18 @@ import com.gmail.spbisoft.recipeapp.domain.*;
 import com.gmail.spbisoft.recipeapp.repositories.CategoryRepository;
 import com.gmail.spbisoft.recipeapp.repositories.RecipeRepository;
 import com.gmail.spbisoft.recipeapp.repositories.UnitOfMeasureRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Slf4j
+
+
+
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -30,10 +30,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     }
 
     @Override
-    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
-        log.debug("Loading Bootstrap Data");
     }
 
     private List<Recipe> getRecipes() {
