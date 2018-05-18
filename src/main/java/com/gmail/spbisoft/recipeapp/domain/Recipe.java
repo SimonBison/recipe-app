@@ -1,6 +1,6 @@
 package com.gmail.spbisoft.recipeapp.domain;
 
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -42,7 +42,9 @@ public class Recipe {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
-    public Recipe() {
+    public void setNotes(Notes notes) {
+        this.notes = notes;
+        notes.setRecipe(this);
     }
 
     public Recipe addIngredient(Ingredient ingredient){
@@ -50,9 +52,4 @@ public class Recipe {
         this.ingredients.add(ingredient);
         return this;
     }
-
-    protected boolean canEqual(Object other) {
-        return other instanceof Recipe;
-    }
-
 }
